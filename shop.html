@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/shop_style.css">
+    <title>Shop</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <section class="section-divider">
+            <div class="input-section">
+                <input type="text" id="itemInput" placeholder="Назва товару">
+                <button id="addItemButton">Додати</button>
+            </div>
+
+            <hr>
+
+            <div class="list-section">
+                <ul id="itemList">
+                    <li>
+                        <span class="item-name bought">Помідори</span>
+                        <span class="item-quantity">2</span>
+                        <button class="buy-button">Не куплено</button>
+                    </li>
+                    <li>
+                        <span class="item-name">Печиво</span>
+                        <span class="item-quantity">2</span>
+                        <button class="buy-button">Куплено</button>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="section-divider">
+
+            <div class="summary-section">
+                <h3>Залишилося</h3>
+                <ul id="remainingItems">
+                    <li>Печиво <span class="badge">2</span></li>
+                    <li>Сир <span class="badge">1</span></li>
+                </ul>
+                <h3>Куплено</h3>
+                <ul id="boughtItems">
+                    <li>Помідори <span class="badge">2</span></li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(196, 192, 188);
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    /* Висота екрану */
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    /* Проміжок між секціями */
+}
+
+section {
+
+    border: 0;
+    background: #fff;
+    padding: 20px;
+    margin: 0;
+    height: 200px;
+    width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    /* Тінь для секцій */
+    border-radius: 1%;
+
+    border-bottom: 1px solid #ccc;
+    /* Колір та стиль лінії */
+    margin-bottom: 20px;
+    /* Відступ вниз від лінії */
+
+
+
+}
+
+.input-section,
+.list-section,
+.summary-section {
+    margin-bottom: 20px;
+    /* Відступ знизу між блоками */
+
+
+}
+
+#addItemButton {
+    background-color: rgb(59, 79, 193);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    /* Жирний шрифт */
+    height: 50px;
+    width: 80px;
+    border: 0 #fff;
+    box-shadow: 0px 6px 6px rgba(9, 23, 79, 1);
+    /* Тінь внизу кнопки */
+
+}
+
+hr {
+    color: #a6a0a0;
+    width: 100%;
+}
+
+input {
+    width: 300px;
+    height: 50px;
+    border-radius: 3%;
+    font-size: 16px;
+    border: 1px solid rgb(147, 142, 147);
+    /* Зміна кольору, товщини та стилю країв */
+
+}
