@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <div class="container">
 
         <section class="section-divider">
@@ -22,14 +23,33 @@
             <div class="list-section">
                 <ul id="itemList">
                     <li>
-                        <span class="item-name bought">Помідори</span>
+                        <span class="bought">Помідори</span>
                         <span class="item-quantity">2</span>
-                        <button class="buy-button">Не куплено</button>
+                        <span class="not-buy-button">Не куплено</span>
                     </li>
+
+                    <hr>
+
                     <li>
                         <span class="item-name">Печиво</span>
+                        <button class="add">+</button>
                         <span class="item-quantity">2</span>
-                        <button class="buy-button">Куплено</button>
+                        <button class="supply">-</button>
+                        <span class="buy-button">Куплено</span>
+                        <button class="cancel">x</button>
+
+                    </li>
+
+                    <hr>
+
+                    <li>
+                        <input type="text" id="cheese" placeholder="Сир">
+                        <button class="add">+</button>
+                        <span class="item-quantity">1</span>
+                        <button class="supply_cheese">-</button>
+                        <span class="buy-button">Куплено</span>
+                        <button class="cancel">x</button>
+
                     </li>
                 </ul>
             </div>
@@ -40,11 +60,24 @@
 
             <div class="summary-section">
                 <h3>Залишилося</h3>
+
+                <hr>
+
                 <ul id="remainingItems">
-                    <li>Печиво <span class="badge">2</span></li>
-                    <li>Сир <span class="badge">1</span></li>
+                    <li>
+                        Печиво <span class="badge">2</span>
+                    </li>
+                    <li>
+                        Сир <span class="badge">1</span>
+                    </li>
                 </ul>
+
+                <hr>
+
                 <h3>Куплено</h3>
+
+                <hr>
+                
                 <ul id="boughtItems">
                     <li>Помідори <span class="badge">2</span></li>
                 </ul>

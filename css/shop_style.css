@@ -23,18 +23,11 @@ section {
     background: #fff;
     padding: 20px;
     margin: 0;
-    height: 200px;
+    height: 230px;
     width: 500px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     /* Тінь для секцій */
     border-radius: 1%;
-
-    border-bottom: 1px solid #ccc;
-    /* Колір та стиль лінії */
-    margin-bottom: 20px;
-    /* Відступ вниз від лінії */
-
-
 
 }
 
@@ -43,7 +36,6 @@ section {
 .summary-section {
     margin-bottom: 20px;
     /* Відступ знизу між блоками */
-
 
 }
 
@@ -56,7 +48,7 @@ section {
     height: 50px;
     width: 80px;
     border: 0 #fff;
-    box-shadow: 0px 6px 6px rgba(9, 23, 79, 1);
+    box-shadow: 0px 4px 4px rgba(9, 23, 79, 1);
     /* Тінь внизу кнопки */
 
 }
@@ -66,12 +58,179 @@ hr {
     width: 100%;
 }
 
+.bought {
+    text-decoration: line-through;
+    margin-right: 175px;
+}
+
 input {
-    width: 300px;
+    width: 400px;
     height: 50px;
     border-radius: 3%;
     font-size: 16px;
     border: 1px solid rgb(147, 142, 147);
     /* Зміна кольору, товщини та стилю країв */
 
+}
+
+#itemList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item-quantity {
+    background-color: rgb(220, 218, 218);
+    padding: 3px 8px;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    display: inline-block;
+}
+
+.supply,
+.supply_cheese {
+    background-color: rgb(230, 32, 22);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    /* Жирний шрифт */
+    height: 30px;
+    width: 30px;
+    border: 0 #fff;
+    box-shadow: 0px 2px 2px rgb(99, 9, 9);
+    /* Тінь внизу кнопки */
+    border-radius: 45%;
+}
+
+.supply_cheese {
+    opacity: 0.5;
+    /* Напівпрозорість */
+
+}
+
+
+.item-name {
+    margin-right: 155px;
+}
+
+#itemList li {
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.add {
+
+    background-color: rgb(63, 199, 55);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    /* Жирний шрифт */
+    height: 30px;
+    width: 30px;
+    border: 0 #fff;
+    box-shadow: 0px 2px 2px rgb(19, 71, 9);
+    /* Тінь внизу кнопки */
+    border-radius: 45%;
+}
+
+.not-buy-button,
+.buy-button {
+
+    background-color: rgb(220, 218, 218);
+    padding: 3px 8px;
+    border-radius: 3px;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 2px 2px rgb(65, 66, 64);
+    display: inline-block;
+}
+
+.buy-button {
+    margin-left: 50px;
+    margin-right: 10px;
+
+}
+
+.not-buy-button {
+    margin-left: 100px;
+
+}
+
+.cancel {
+
+    background-color: rgb(230, 32, 22);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    /* Жирний шрифт */
+    height: 30px;
+    width: 30px;
+    border: 0 #fff;
+    box-shadow: 0px 2px 2px rgb(99, 9, 9);
+    /* Тінь внизу кнопки */
+    border-radius: 10%;
+
+}
+
+#cheese {
+
+    width: 90px;
+    height: 20px;
+    border-radius: 3%;
+    font-size: 16px;
+    color: black;
+    border: 1px solid rgb(147, 142, 147);
+    /* Зміна кольору, товщини та стилю країв */
+    margin-right: 115px;
+
+}
+
+#cheese::placeholder {
+    color: black;
+}
+
+#cheese:focus {
+    border-color: rgb(67, 118, 211);
+    outline: none;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+#remainingItems,
+#boughtItems {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+#boughtItems {
+    text-decoration: line-through;
+}
+
+#remainingItems li .badge,
+#boughtItems li .badge {
+    margin-left: 5px;
+    background-color: rgb(239, 130, 13);
+    padding: 3px 8px;
+    border-radius: 45%;
+    color: rgb(255, 255, 255);
+
+}
+
+#boughtItems li .badge {
+    text-decoration: #fff line-through;
+}
+
+#remainingItems li,
+#boughtItems li {
+    display: flex;
+    align-items: center;
+    background-color: rgb(220, 218, 218);
+    padding: 7px;
+    border-radius: 5px;
 }
