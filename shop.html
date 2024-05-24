@@ -15,7 +15,7 @@
         <section class="section-divider">
             <div class="input-section">
                 <input type="text" id="itemInput" placeholder="Назва товару">
-                <button id="addItemButton">Додати</button>
+                <button id="addItemButton" data-tooltip="Знайти товар">Додати</button>
             </div>
 
             <hr>
@@ -32,11 +32,11 @@
 
                     <li>
                         <span class="item-name">Печиво</span>
-                        <button class="add">+</button>
+                        <button class="add" data-tooltip="Додати товар">+</button>
                         <span class="item-quantity">2</span>
-                        <button class="supply">-</button>
+                        <button class="supply" data-tooltip="Видалити товар">-</button>
                         <span class="buy-button">Куплено</span>
-                        <button class="cancel">x</button>
+                        <button class="cancel" data-tooltip="Видалити">x</button>
 
                     </li>
 
@@ -44,11 +44,11 @@
 
                     <li>
                         <input type="text" id="cheese" placeholder="Сир">
-                        <button class="add">+</button>
+                        <button class="add" data-tooltip="Додати товар">+</button>
                         <span class="item-quantity">1</span>
-                        <button class="supply_cheese">-</button>
+                        <button class="supply_cheese" data-tooltip="Видалити товар">-</button>
                         <span class="buy-button">Куплено</span>
-                        <button class="cancel">x</button>
+                        <button class="cancel" data-tooltip="Видалити">x</button>
 
                     </li>
                 </ul>
@@ -85,6 +85,9 @@
         </section>
 
     </div>
+
+    <div id="badge">Buy List</div>
+
 </body>
 
 </html>

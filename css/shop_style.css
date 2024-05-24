@@ -234,3 +234,91 @@ h3 {
     padding: 7px;
     border-radius: 5px;
 }
+
+[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+}
+
+[data-tooltip]::before {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: all 1.2s ease;
+    content: attr(data-tooltip);
+    background-color: #8A2BE2;
+    /* Фіолетовий фон */
+    color: #fff;
+    padding: 5px 5px;
+    border-radius: 10px;
+    /* Круглі кути */
+    white-space: nowrap;
+    z-index: 1000;
+    transform: translateX(0px) translateY(100px);
+    /* Початкова позиція для анімації */
+}
+
+
+[data-tooltip]:hover::before {
+    visibility: visible;
+    opacity: 1;
+    bottom: 125%;
+    /* Позиція підказки над елементом */
+    left: 10%;
+    transform: translateX(0%) translateY(0%);
+}
+
+#badge {
+    height: 70px;
+    position: fixed;
+    bottom: 0;
+    left: 20px;
+    background-color: #4B0082;
+    /* Темно фіолетовий колір */
+    color: white;
+    padding: 10px 20px;
+    border-top-right-radius: 10px;
+    /* Скруглені верхні кути */
+    border-top-left-radius: 10px;
+    transition: transform 0.9s ease, background-color 0.9s ease;
+    /* Плавна анімація */
+    transform: translateY(40px);
+    /* Початкова позиція для анімації */
+}
+
+#badge:hover {
+    transform: translateY(-20px);
+    /* Кінцева позиція для анімації */
+    background-color: #8542b5;
+    /* Зміна кольору при наведенні */
+}
+
+#badge::after {
+    content: "Гапоненко Єлизавета";
+    display: block;
+    font-size: 12px;
+    margin-top: 30px;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+
+#badge:hover::after {
+    opacity: 1;
+}
+
+@media print {
+    #badge {
+        background-color: #fff;
+        /* Білий фон */
+        color: #4B0082;
+        /* Фіолетовий текст */
+        border: 2px solid #4B0082;
+    }
+
+    #badge::before {
+        content: "Гапоненко Єлизавета";
+        /* Текст для друку */
+    }
+}
+
