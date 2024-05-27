@@ -28,7 +28,8 @@ section {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     /* Тінь для секцій */
     border-radius: 1%;
-    transition: all 0.8s ease; /* Плавный переход */
+    transition: all 0.8s ease;
+    /* Плавный переход */
 
 
 }
@@ -72,11 +73,10 @@ section {
     width: 100%;
 }
 
-.list-section .bought,
-.item-name,
-#cheese {
+.list-section .bought {
     width: 10%;
     margin-right: 30%;
+    text-decoration: line-through;
 
 }
 
@@ -109,18 +109,12 @@ section {
 }
 
 
-
 hr {
     color: #a6a0a0;
     width: 100%;
 }
 
-.bought {
-    text-decoration: line-through;
-}
-
 input {
-    width: 400px;
     height: 50px;
     border-radius: 3%;
     font-size: 16px;
@@ -162,7 +156,6 @@ input {
 .supply_cheese {
     opacity: 0.5;
     /* Напівпрозорість */
-
 }
 
 
@@ -378,10 +371,9 @@ h3 {
 
     section {
         width: 100%;
-        /* Ширина на всю ширину батьківського контейнера */
         margin-bottom: 30px;
-        /* Видаляємо відступ між колонками */
-        transition: all 0.5s ease; /* Плавный переход */
+        transition: all 0.5s ease;
+        /* Плавнийй перехід */
         min-width: 450px;
     }
 }
