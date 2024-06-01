@@ -32,23 +32,36 @@
 
                     <li>
                         <span class="item-name">Печиво</span>
-                        <button class="add" data-tooltip="Додати товар">+</button>
-                        <span class="item-quantity">2</span>
-                        <button class="supply" data-tooltip="Видалити товар">-</button>
-                        <button class="buy-button" data-tooltip="Товар куплено">Куплено</span>
-                        <button class="cancel" data-tooltip="Видалити">x</button>
+                        <div class="item-quantity-wrapper">
+                            <button class="add" data-tooltip="Додати товар">+</button>
+                            <span class="item-quantity">2</span>
+                            <button class="supply" data-tooltip="Видалити товар">-</button>
+                        </div>
+
+                        <div class="item-quantity-wrapper">
+
+                            <button class="buy-button" data-tooltip="Товар куплено">Куплено</span>
+                                <button class="cancel" data-tooltip="Видалити">x</button>
+
+                        </div>
 
                     </li>
 
                     <hr>
 
                     <li>
-                        <span class="item-name">Сир</span>                        
-                        <button class="add" data-tooltip="Додати товар">+</button>
-                        <span class="item-quantity">1</span>
-                        <button class="supply" data-tooltip="Видалити товар">-</button>
-                        <button class="buy-button" data-tooltip="Товар куплено">Куплено</span>
-                        <button class="cancel" data-tooltip="Видалити">x</button>
+                        <span class="item-name">Сир</span>
+                        <div class="item-quantity-wrapper">
+                            <button class="add" data-tooltip="Додати товар">+</button>
+                            <span class="item-quantity">1</span>
+                            <button class="supply" data-tooltip="Видалити товар">-</button>
+
+                        </div>
+
+                        <div class="item-quantity-wrapper">
+                            <button class="buy-button" data-tooltip="Товар куплено">Куплено</span>
+                            <button class="cancel" data-tooltip="Видалити">x</button>
+                        </div>
 
                     </li>
                 </ul>
@@ -77,7 +90,7 @@
                 <h3>Куплено</h3>
 
                 <hr>
-                
+
                 <ul id="boughtItems">
                     <li>Помідори <span class="badge">2</span></li>
                 </ul>

@@ -98,7 +98,7 @@ section {
 
 .bought {
     text-decoration: line-through;
-    width: 20%;
+    width: 18%;
 
 }
 
@@ -186,6 +186,9 @@ input {
     font-size: 16px;
     border-color: rgb(220, 218, 218);
 
+}
+.buy-button{
+    margin-right: 5px;
 }
 
 .cancel {
