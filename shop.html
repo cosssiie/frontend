@@ -12,7 +12,7 @@
 
     <div class="container">
 
-        <section class="section-divider">
+        <section class="search-section">
             <div class="input-section">
                 <input type="text" id="itemInput" placeholder="Назва товару">
                 <button id="addItemButton" data-tooltip="Знайти товар">Додати</button>
@@ -25,7 +25,7 @@
                     <li>
                         <span class="bought">Помідори</span>
                         <span class="item-quantity-first">2</span>
-                        <span class="not-buy-button">Не куплено</span>
+                        <button class="not-buy-button" data-tooltip="Товар не куплено">Не куплено</span>
                     </li>
 
                     <hr>
@@ -35,7 +35,7 @@
                         <button class="add" data-tooltip="Додати товар">+</button>
                         <span class="item-quantity">2</span>
                         <button class="supply" data-tooltip="Видалити товар">-</button>
-                        <span class="buy-button">Куплено</span>
+                        <button class="buy-button" data-tooltip="Товар куплено">Куплено</span>
                         <button class="cancel" data-tooltip="Видалити">x</button>
 
                     </li>
@@ -43,11 +43,11 @@
                     <hr>
 
                     <li>
-                        <input type="text" id="cheese" placeholder="Сир">
+                        <span class="item-name">Сир</span>                        
                         <button class="add" data-tooltip="Додати товар">+</button>
                         <span class="item-quantity">1</span>
-                        <button class="supply_cheese" data-tooltip="Видалити товар">-</button>
-                        <span class="buy-button">Куплено</span>
+                        <button class="supply" data-tooltip="Видалити товар">-</button>
+                        <button class="buy-button" data-tooltip="Товар куплено">Куплено</span>
                         <button class="cancel" data-tooltip="Видалити">x</button>
 
                     </li>
@@ -56,7 +56,7 @@
 
         </section>
 
-        <section class="section-divider">
+        <section class="basket-section">
 
             <div class="summary-section">
                 <h3>Залишилося</h3>
