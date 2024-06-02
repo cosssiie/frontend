@@ -18,14 +18,29 @@
                 <button id="addItemButton" data-tooltip="Знайти товар">Додати</button>
             </div>
 
-            <hr>
 
+            <div class="scrollable-list">
             <div class="list-section">
                 <ul id="itemList">
+                    <hr>
                     <li>
-                        <span class="bought">Помідори</span>
-                        <span class="item-quantity-first">2</span>
-                        <button class="not-buy-button" data-tooltip="Не купляти товар">Не куплено</span>
+                        <span class="item-name">Помідори</span>
+                        <div class="item-quantity-wrapper">
+                            <button class="add" data-tooltip="Додати товар">+</button>
+                            <span class="item-quantity">1</span>
+                            <button class="supply" data-tooltip="Видалити товар">-</button>
+                        </div>
+
+                        <div class="delete-wrapper">
+
+                            <button class="buy-button" data-tooltip="Купити товар">Куплено</span>
+
+                                <button class="unbuy-button" data-tooltip="Зробити не купленим"
+                                    style="display: none;">Не куплено</button>
+
+                                <button class="cancel" data-tooltip="Видалити">x</button>
+
+                        </div>
                     </li>
 
                     <hr>
@@ -34,13 +49,15 @@
                         <span class="item-name">Печиво</span>
                         <div class="item-quantity-wrapper">
                             <button class="add" data-tooltip="Додати товар">+</button>
-                            <span class="item-quantity">2</span>
+                            <span class="item-quantity">1</span>
                             <button class="supply" data-tooltip="Видалити товар">-</button>
                         </div>
 
-                        <div class="item-quantity-wrapper">
+                        <div class="delete-wrapper">
 
                             <button class="buy-button" data-tooltip="Купити товар">Куплено</span>
+                                <button class="unbuy-button" data-tooltip="Зробити не купленим"
+                                    style="display: none;">Не куплено</button>
                                 <button class="cancel" data-tooltip="Видалити">x</button>
 
                         </div>
@@ -58,14 +75,17 @@
 
                         </div>
 
-                        <div class="item-quantity-wrapper">
-                            <button class="buy-button" data-tooltip="Купити">Куплено</span>
-                            <button class="cancel" data-tooltip="Видалити">x</button>
+                        <div class="delete-wrapper">
+                            <button class="buy-button" data-tooltip="Купити товар">Куплено</span>
+                                <button class="unbuy-button" data-tooltip="Зробити не купленим"
+                                    style="display: none;">Не куплено</button>
+                                <button class="cancel" data-tooltip="Видалити">x</button>
                         </div>
 
                     </li>
                 </ul>
-            </div>
+            <!-- </div> -->
+        </div>
 
         </section>
 
@@ -101,7 +121,7 @@
 
     <div id="badge">Buy List</div>
 
-    <script src=”basket.js”></script>
+    <script src="basket.js"></script>
 
 </body>
 
