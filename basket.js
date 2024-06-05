@@ -60,7 +60,7 @@ itemToDelete.forEach(function (cancelButton) {
     cancelButton.addEventListener('click', function () {
         let listItem = this.closest('li');
         let itemName = listItem.querySelector('.item-name').textContent.trim();
-        
+
         removeListItem(listItem);
 
         removeItemFromSection(itemName, remainingItems);
@@ -112,12 +112,26 @@ itemNames.forEach(function (itemName) {
             if (newName === '') {
                 this.parentNode.textContent = originalName;
             } else {
-                this.parentNode.textContent = newName;
-                updateItemName(originalName, newName);
+                let isUnique = checkUniqueName(newName);
+                if (isUnique) {
+                    this.parentNode.textContent = newName;
+                    updateItemName(originalName, newName);
+                } else {
+                    this.parentNode.textContent = originalName;
+                }
             }
         });
     });
 });
+
+function checkUniqueName(newName) {
+    let existingNames = [];
+    itemNames.forEach(function (itemName) {
+        existingNames.push(itemName.textContent.trim());
+    });
+    return !existingNames.includes(newName);
+}
+
 
 
 function updateItemName(originalName, newName) {
@@ -131,8 +145,6 @@ function updateItemName(originalName, newName) {
 }
 
 
-
-
 // Куплений/некуплений товар
 document.querySelectorAll('.buy-button').forEach(button => {
     button.addEventListener('click', function () {
@@ -140,6 +152,19 @@ document.querySelectorAll('.buy-button').forEach(button => {
         listItem.classList.add('bought');
         this.style.display = 'none';
         listItem.querySelector('.unbuy-button').style.display = 'inline';
+
+        let itemName = listItem.querySelector('.item-name').textContent.trim();
+        let itemQuantity = listItem.querySelector('.item-quantity').textContent;
+
+        removeItemFromSection(itemName, remainingItems);
+
+        let boughtItem = document.createElement('li');
+        boughtItem.textContent = itemName + ' ';
+        let badge = document.createElement('span');
+        badge.classList.add('badge');
+        badge.textContent = itemQuantity;
+        boughtItem.appendChild(badge);
+        document.getElementById('boughtItems').appendChild(boughtItem);
     });
 });
 
@@ -149,5 +174,22 @@ document.querySelectorAll('.unbuy-button').forEach(button => {
         listItem.classList.remove('bought');
         this.style.display = 'none';
         listItem.querySelector('.buy-button').style.display = 'inline';
+
+        let itemName = listItem.querySelector('.item-name').textContent.trim();
+        let itemQuantity = listItem.querySelector('.item-quantity').textContent;
+
+        removeItemFromSection(itemName, boughtItems);
+
+        let remainingItem = document.createElement('li');
+        remainingItem.textContent = itemName + ' ';
+        let badge = document.createElement('span');
+        badge.classList.add('badge');
+        badge.textContent = itemQuantity;
+        remainingItem.appendChild(badge);
+        document.getElementById('remainingItems').appendChild(remainingItem);
+    
     });
 });
+
+
+
