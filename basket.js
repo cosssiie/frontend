@@ -7,13 +7,18 @@ itemQuantities.forEach(function (itemQuantity) {
     let minus = itemQuantity.parentElement.querySelector(".supply");
 
     plus.addEventListener('click', function () {
-        itemQuantity.textContent = Number(itemQuantity.textContent) + 1;
+        let newQuantity = Number(itemQuantity.textContent) + 1;
+        itemQuantity.textContent = newQuantity;
         minus.classList.remove('disabled');
+        updateQuantityInSections(itemQuantity.closest('li').querySelector('.item-name').textContent.trim(), newQuantity);
     });
 
     minus.addEventListener('click', function () {
-        if (Number(itemQuantity.textContent) > 1) {
-            itemQuantity.textContent = Number(itemQuantity.textContent) - 1;
+        let currentQuantity = Number(itemQuantity.textContent);
+        if (currentQuantity > 1) {
+            let newQuantity = currentQuantity - 1;
+            itemQuantity.textContent = newQuantity;
+            updateQuantityInSections(itemQuantity.closest('li').querySelector('.item-name').textContent.trim(), newQuantity);
         }
         if (Number(itemQuantity.textContent) === 1) {
             minus.classList.add('disabled');
@@ -25,6 +30,27 @@ itemQuantities.forEach(function (itemQuantity) {
     }
 });
 
+function updateQuantityInSections(itemName, newQuantity) {
+    updateItemQuantity(itemName, newQuantity, remainingItems);
+    updateItemQuantity(itemName, newQuantity, boughtItems);
+}
+
+function updateItemQuantity(itemName, newQuantity, section) {
+    let items = section.querySelectorAll('li');
+    items.forEach(item => {
+        if (item.textContent.includes(itemName)) {
+            let badge = item.querySelector('.badge');
+            if (badge) {
+                badge.textContent = newQuantity;
+            }
+        }
+    });
+}
+
+
+
+
+
 
 // Видалити товар зі списку
 
@@ -33,14 +59,34 @@ let itemToDelete = document.querySelectorAll(".cancel");
 itemToDelete.forEach(function (cancelButton) {
     cancelButton.addEventListener('click', function () {
         let listItem = this.closest('li');
-        let hrElement = listItem.previousElementSibling;
-        if (hrElement && hrElement.tagName.toLowerCase() === 'hr') {
-            hrElement.remove();
-        }
-        listItem.remove();
+        let itemName = listItem.querySelector('.item-name').textContent.trim();
+        
+        removeListItem(listItem);
+
+        removeItemFromSection(itemName, remainingItems);
+
+        removeItemFromSection(itemName, boughtItems);
     });
 });
 
+function removeListItem(listItem) {
+    let hrElement = listItem.previousElementSibling;
+    if (hrElement && hrElement.tagName.toLowerCase() === 'hr') {
+        hrElement.remove();
+    }
+    listItem.remove();
+}
+
+function removeItemFromSection(itemName, section) {
+    let items = section.querySelectorAll('li');
+    items.forEach(item => {
+        if (item.textContent.includes(itemName)) {
+            let badge = item.querySelector('.badge');
+            if (badge) badge.remove();
+            item.remove();
+        }
+    });
+}
 
 
 // Редагування назви товару
@@ -67,10 +113,22 @@ itemNames.forEach(function (itemName) {
                 this.parentNode.textContent = originalName;
             } else {
                 this.parentNode.textContent = newName;
+                updateItemName(originalName, newName);
             }
         });
     });
 });
+
+
+function updateItemName(originalName, newName) {
+    let remainingItems = document.getElementById("remainingItems");
+    let items = remainingItems.querySelectorAll('li');
+    items.forEach(item => {
+        if (item.textContent.includes(originalName)) {
+            item.innerHTML = item.innerHTML.replace(originalName, newName);
+        }
+    });
+}
 
 
 
@@ -93,8 +151,3 @@ document.querySelectorAll('.unbuy-button').forEach(button => {
         listItem.querySelector('.buy-button').style.display = 'inline';
     });
 });
-
-
-
-
-
