@@ -1,16 +1,15 @@
 // збільшення/зменшення кількості товару
 
-let itemQuantities = document.querySelectorAll(".item-quantity");
-
-itemQuantities.forEach(function (itemQuantity) {
-    let plus = itemQuantity.parentElement.querySelector(".add");
-    let minus = itemQuantity.parentElement.querySelector(".supply");
+function addQuantityHandlers(item) {
+    let itemQuantity = item.querySelector('.item-quantity');
+    let plus = item.querySelector('.add');
+    let minus = item.querySelector('.supply');
 
     plus.addEventListener('click', function () {
         let newQuantity = Number(itemQuantity.textContent) + 1;
         itemQuantity.textContent = newQuantity;
         minus.classList.remove('disabled');
-        updateQuantityInSections(itemQuantity.closest('li').querySelector('.item-name').textContent.trim(), newQuantity);
+        updateQuantityInSections(item.querySelector('.item-name').textContent.trim(), newQuantity);
     });
 
     minus.addEventListener('click', function () {
@@ -18,7 +17,7 @@ itemQuantities.forEach(function (itemQuantity) {
         if (currentQuantity > 1) {
             let newQuantity = currentQuantity - 1;
             itemQuantity.textContent = newQuantity;
-            updateQuantityInSections(itemQuantity.closest('li').querySelector('.item-name').textContent.trim(), newQuantity);
+            updateQuantityInSections(item.querySelector('.item-name').textContent.trim(), newQuantity);
         }
         if (Number(itemQuantity.textContent) === 1) {
             minus.classList.add('disabled');
@@ -28,11 +27,111 @@ itemQuantities.forEach(function (itemQuantity) {
     if (Number(itemQuantity.textContent) === 1) {
         minus.classList.add('disabled');
     }
-});
+}
+
+
+// Видалити товар зі списку
+function addDeleteHandler(item) {
+    let cancelButton = item.querySelector('.cancel');
+    cancelButton.addEventListener('click', function () {
+        let listItem = this.closest('li');
+        let itemName = listItem.querySelector('.item-name').textContent.trim();
+
+        removeListItem(listItem);
+        removeItemFromSection(itemName, remainingItemsList);
+        removeItemFromSection(itemName, document.getElementById('boughtItems'));
+    });
+}
+
+
+// Редагування назви товару
+
+function addEditNameHandler(item) {
+    let itemName = item.querySelector('.item-name');
+    let buyButton = item.querySelector('.buy-button');
+    itemName.addEventListener('click', function () {
+        let isBought = item.classList.contains('bought');
+        if (!isBought) { 
+            let originalName = this.textContent;
+            let input = document.createElement('input');
+            input.type = 'text';
+            input.value = originalName;
+            this.textContent = '';
+            this.appendChild(input);
+            input.focus();
+
+            input.addEventListener('blur', function () {
+                let newName = this.value.trim();
+                let maxLength = 10;
+                if (newName.length > maxLength) {
+                    newName = newName.slice(0, maxLength) + '...';
+                }
+                if (newName === '') {
+                    this.parentNode.textContent = originalName;
+                } else {
+                    let isUnique = checkUniqueName(newName);
+                    if (isUnique) {
+                        this.parentNode.textContent = newName;
+                        updateItemName(originalName, newName);
+                    } else {
+                        this.parentNode.textContent = originalName;
+                    }
+                }
+            });
+        }
+    });
+}
+
+
+// Куплений/некуплений товар
+function addBuyUnbuyHandlers(item) {
+    let buyButton = item.querySelector('.buy-button');
+    let unbuyButton = item.querySelector('.unbuy-button');
+
+    buyButton.addEventListener('click', function () {
+        let listItem = this.closest('li');
+        listItem.classList.add('bought');
+        this.style.display = 'none';
+        unbuyButton.style.display = 'inline';
+
+        let itemName = listItem.querySelector('.item-name').textContent.trim();
+        let itemQuantity = listItem.querySelector('.item-quantity').textContent;
+
+        removeItemFromSection(itemName, remainingItemsList);
+
+        let boughtItem = document.createElement('li');
+        boughtItem.textContent = itemName + ' ';
+        let badge = document.createElement('span');
+        badge.classList.add('badge');
+        badge.textContent = itemQuantity;
+        boughtItem.appendChild(badge);
+        document.getElementById('boughtItems').appendChild(boughtItem);
+    });
+
+    unbuyButton.addEventListener('click', function () {
+        let listItem = this.closest('li');
+        listItem.classList.remove('bought');
+        this.style.display = 'none';
+        buyButton.style.display = 'inline';
+
+        let itemName = listItem.querySelector('.item-name').textContent.trim();
+        let itemQuantity = listItem.querySelector('.item-quantity').textContent;
+
+        removeItemFromSection(itemName, document.getElementById('boughtItems'));
+
+        let remainingItem = document.createElement('li');
+        remainingItem.textContent = itemName + ' ';
+        let badge = document.createElement('span');
+        badge.classList.add('badge');
+        badge.textContent = itemQuantity;
+        remainingItem.appendChild(badge);
+        remainingItemsList.appendChild(remainingItem);
+    });
+}
 
 function updateQuantityInSections(itemName, newQuantity) {
-    updateItemQuantity(itemName, newQuantity, remainingItems);
-    updateItemQuantity(itemName, newQuantity, boughtItems);
+    updateItemQuantity(itemName, newQuantity, remainingItemsList);
+    updateItemQuantity(itemName, newQuantity, document.getElementById('boughtItems'));
 }
 
 function updateItemQuantity(itemName, newQuantity, section) {
@@ -46,28 +145,6 @@ function updateItemQuantity(itemName, newQuantity, section) {
         }
     });
 }
-
-
-
-
-
-
-// Видалити товар зі списку
-
-let itemToDelete = document.querySelectorAll(".cancel");
-
-itemToDelete.forEach(function (cancelButton) {
-    cancelButton.addEventListener('click', function () {
-        let listItem = this.closest('li');
-        let itemName = listItem.querySelector('.item-name').textContent.trim();
-
-        removeListItem(listItem);
-
-        removeItemFromSection(itemName, remainingItems);
-
-        removeItemFromSection(itemName, boughtItems);
-    });
-});
 
 function removeListItem(listItem) {
     let hrElement = listItem.previousElementSibling;
@@ -88,108 +165,78 @@ function removeItemFromSection(itemName, section) {
     });
 }
 
-
-// Редагування назви товару
-
-let itemNames = document.querySelectorAll(".item-name");
-
-itemNames.forEach(function (itemName) {
-    itemName.addEventListener('click', function () {
-        let originalName = this.textContent;
-        let input = document.createElement('input');
-        input.type = 'text';
-        input.value = originalName;
-        this.textContent = '';
-        this.appendChild(input);
-        input.focus();
-
-        input.addEventListener('blur', function () {
-            let newName = this.value.trim();
-            let maxLength = 10;
-            if (newName.length > maxLength) {
-                newName = newName.slice(0, maxLength) + '...';
-            }
-            if (newName === '') {
-                this.parentNode.textContent = originalName;
-            } else {
-                let isUnique = checkUniqueName(newName);
-                if (isUnique) {
-                    this.parentNode.textContent = newName;
-                    updateItemName(originalName, newName);
-                } else {
-                    this.parentNode.textContent = originalName;
-                }
-            }
-        });
-    });
-});
-
 function checkUniqueName(newName) {
     let existingNames = [];
-    itemNames.forEach(function (itemName) {
+    document.querySelectorAll(".item-name").forEach(function (itemName) {
         existingNames.push(itemName.textContent.trim());
     });
     return !existingNames.includes(newName);
 }
 
-
-
 function updateItemName(originalName, newName) {
-    let remainingItems = document.getElementById("remainingItems");
-    let items = remainingItems.querySelectorAll('li');
-    items.forEach(item => {
-        if (item.textContent.includes(originalName)) {
-            item.innerHTML = item.innerHTML.replace(originalName, newName);
-        }
+    let sections = [remainingItemsList, document.getElementById('boughtItems')];
+    sections.forEach(section => {
+        let items = section.querySelectorAll('li');
+        items.forEach(item => {
+            if (item.textContent.includes(originalName)) {
+                item.innerHTML = item.innerHTML.replace(originalName, newName);
+            }
+        });
     });
 }
+document.querySelectorAll('#itemList > li').forEach(addEventListenersToItem);
 
 
-// Куплений/некуплений товар
-document.querySelectorAll('.buy-button').forEach(button => {
-    button.addEventListener('click', function () {
-        let listItem = this.closest('li');
-        listItem.classList.add('bought');
-        this.style.display = 'none';
-        listItem.querySelector('.unbuy-button').style.display = 'inline';
+// Додати товар
+let addItemButton = document.getElementById("addItemButton");
+let itemList = document.getElementById("itemList");
+let remainingItemsList = document.getElementById("remainingItems");
 
-        let itemName = listItem.querySelector('.item-name').textContent.trim();
-        let itemQuantity = listItem.querySelector('.item-quantity').textContent;
+addItemButton.addEventListener('click', function () {
 
-        removeItemFromSection(itemName, remainingItems);
+    let itemInput = document.getElementById("itemInput");
+    let itemName = itemInput.value.trim();
 
-        let boughtItem = document.createElement('li');
-        boughtItem.textContent = itemName + ' ';
-        let badge = document.createElement('span');
-        badge.classList.add('badge');
-        badge.textContent = itemQuantity;
-        boughtItem.appendChild(badge);
-        document.getElementById('boughtItems').appendChild(boughtItem);
-    });
-});
+    if (itemName !== '' && checkUniqueName(itemName)) {
 
-document.querySelectorAll('.unbuy-button').forEach(button => {
-    button.addEventListener('click', function () {
-        let listItem = this.closest('li');
-        listItem.classList.remove('bought');
-        this.style.display = 'none';
-        listItem.querySelector('.buy-button').style.display = 'inline';
+        let hr = document.createElement('hr');
 
-        let itemName = listItem.querySelector('.item-name').textContent.trim();
-        let itemQuantity = listItem.querySelector('.item-quantity').textContent;
+        let newItem = document.createElement('li');
+        newItem.innerHTML = `
+            <span class="item-name">${itemName}</span>
+            <div class="item-quantity-wrapper">
+                <button class="add" data-tooltip="Додати товар">+</button>
+                <span class="item-quantity">1</span>
+                <button class="supply" data-tooltip="Видалити товар">-</button>
+            </div>
+            <div class="delete-wrapper">
+                <button class="buy-button" data-tooltip="Купити товар">Куплено</button>
+                <button class="unbuy-button" data-tooltip="Зробити не купленим" style="display: none;">Не куплено</button>
+                <button class="cancel" data-tooltip="Видалити">x</button>
+            </div>
+        `;
 
-        removeItemFromSection(itemName, boughtItems);
+        itemList.appendChild(hr);
+        itemList.appendChild(newItem);
+
 
         let remainingItem = document.createElement('li');
-        remainingItem.textContent = itemName + ' ';
-        let badge = document.createElement('span');
-        badge.classList.add('badge');
-        badge.textContent = itemQuantity;
-        remainingItem.appendChild(badge);
-        document.getElementById('remainingItems').appendChild(remainingItem);
-    
-    });
+        remainingItem.innerHTML = `
+            ${itemName} <span class="badge">1</span>
+        `;
+
+        remainingItemsList.appendChild(remainingItem);
+
+        itemInput.value = '';
+
+        addEventListenersToItem(newItem);
+
+    };
 });
 
-
-
+function addEventListenersToItem(item) {
+    addQuantityHandlers(item);
+    addDeleteHandler(item);
+    addEditNameHandler(item);
+    addBuyUnbuyHandlers(item);
+}

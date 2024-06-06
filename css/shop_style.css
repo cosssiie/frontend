@@ -159,7 +159,7 @@ input {
     height: 100%;
     width: 100%;
     list-style-type: none;
-    border-bottom: px solid #ccc;  /* Optional: Add a bottom border to separate items visually */
+    border-bottom: px solid #ccc; 
 }
 
 
@@ -264,8 +264,8 @@ input {
 h3 {
     font-size: 20px;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 
@@ -274,6 +274,9 @@ h3 {
 
     display: flex;
     justify-content: flex-start;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
     align-items: center;
     height: 100%;
     width: 100%;
@@ -307,6 +310,7 @@ h3 {
     padding: 7px;
     border-radius: 5px;
     margin-right: 10px;
+    white-space: nowrap;
 }
 
 [data-tooltip] {
