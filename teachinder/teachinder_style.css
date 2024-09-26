@@ -276,7 +276,7 @@ main {
 .favorite-teachers-list {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 10px;
@@ -318,6 +318,33 @@ main {
 
 }
 
+.modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.favorite-star {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
 .modal-content {
     background-color: #fff;
     margin: auto;
@@ -355,16 +382,6 @@ main {
 .teacher-details {
     flex: 2;
     padding-left: 10px;
-}
-
-.close {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 15px;
 }
 
 .close:hover,

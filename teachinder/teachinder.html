@@ -15,8 +15,8 @@
             <div class="head">
                 <h1>Teachinder</h1>
                 <div class="search-bar">
-                    <input type="text" placeholder="Name, note or age to search">
-                    <button class="search">Search</button>
+                    <input id="searchInput" type="text" placeholder="Name, note or age to search">
+                    <button class="search" id="searchBtn">Search</button>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@
                     <label for="age">Age</label>
                     <select id="age" name="age">
                         <option value="select">Select age</option>
-                        <option value="18-31">18-30</option>
+                        <option value="18-30">18-30</option>
                         <option value="31-40">31-40</option>
                         <option value="41-50">41-50</option>
                         <option value="51+">51+</option>
@@ -54,10 +54,12 @@
                     <label for="region">Region</label>
                     <select id="region" name="region">
                         <option value="select">Select region</option>
-                        <option value="north">Europe</option>
-                        <option value="south">America</option>
-                        <option value="east">Africa</option>
-                        <option value="west">Asia</option>
+                        <option value="Europe">Europe</option>
+                        <option value="NorthAmerica">North America</option>
+                        <option value="SouthAmerica">South America</option>
+                        <option value="Africa">Africa</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Australia">Australia</option>
                     </select>
 
                     <label for="sex">Sex</label>
@@ -68,88 +70,17 @@
                     </select>
 
                     <label class="with-checkbox">
-                        <input type="checkbox"> Only with photo
+                        <input type="checkbox" id="only-photo"> Only with photo
                     </label>
-
+                
                     <label class="with-checkbox">
-                        <input type="checkbox"> Only favorites
+                        <input type="checkbox" id="only-favorites"> Only favorites
                     </label>
 
                 </div>
 
 
                 <div class="teachers-list">
-
-                    <div class="teacher-card"
-                        onclick="showTeacherInfo('Ihor', 'Tkachuk', 'Chemistry', 'Kyiv, Ukraine', '35, Male', 'ihor.tkachuk@domain.com', '+380964949532', '/images/default.jfif')">
-                        <img class="photo" src="/images/default.jfif" alt="Teacher Photo">
-                        <div class="teachersName">
-                            <h3>Ihor<br>Tkachuk</h3>
-                        </div>
-                        <p><span class="science">Chemistry</span><br><span class="country">Ukraine</span></p>
-                    </div>
-
-                    <div class="teacher-card"
-                        onclick="showTeacherInfo('Pragg', 'Rameshbabu', 'Chess', 'Deli, Indie', '32, Male', 'Pragg123@domain.com', '+23655041278', '/images/default.jfif')">
-                        <img class="photo" src="/images/default.jfif">
-                        <div class="teachersName">
-                            <h3>Pragg<br>Rameshbabu</h3>
-
-                        </div>
-                        <p><span class="science">Chess</span><br><span class="country">Indie</span></p>
-                    </div>
-
-                    <div class="teacher-card"
-                        onclick="showTeacherInfo('Floor', 'Jansen', 'Vocal', 'Denmark', '26, Female', 'floor_jansen@domain.com', '+23655041278', '/images/default.jfif')">
-                        <img class="photo" src="/images/default.jfif">
-                        <img class="star" src="/images/star.png" alt="Star">
-                        <div class="teachersName">
-                            <h3>Floor<br>Jansen</h3>
-                        </div>
-                        <p><span class="science">Vocal</span><br><span class="country">Denmark</span></p>
-
-                    </div>
-
-                    <div class="teacher-card"
-                        onclick="showTeacherInfo('John', 'Burke', 'Computer Science', 'Belgium', '42, Male', 'burke5@domain.com', '+23655041278', '/images/default.jfif')">
-                        <img class="photo" src="/images/default.jfif">
-                        <div class="teachersName">
-                            <h3>John<br>Burke</h3>
-                        </div>
-                        <p><span class="science">Computer Science</span><br><span class="country">Belgium</span></p>
-
-                    </div>
-
-                    <div class="teacher-card"
-                        onclick="showTeacherInfo('Ari', 'Tang', 'Biology', 'China', '28, Female', 'ari_tutor@domain.com', '+23655041278', '/images/default.jfif')">
-                        <img class="photo" src="/images/default.jfif">
-                        <img class="star" src="/images/star.png" alt="Star">
-                        <div class="teachersName">
-                            <h3>Ari<br>Tang</h3>
-                        </div>
-                        <p><span class="science">Biology</span><br><span class="country">China</span></p>
-
-                    </div>
-
-                    <div class="teacher-card"
-                        onclick="showTeacherInfo('Rachel', 'Andrew', 'Medicine', 'UK', '21, Female', 'rachel@domain.com', '+23655041278', '/images/default.jfif')">
-                        <img class="photo" src="/images/default.jfif">
-                        <div class="teachersName">
-                            <h3>Rachel<br>Andrew</h3>
-                        </div>
-                        <p><span class="science">Medicine</span><br><span class="country">UK</span></p>
-
-                    </div>
-
-                    <div class="teacher-card"
-                        onclick="showTeacherInfo('Anna', 'Muzychuk', 'Chess', 'Belarus', '35, Female', 'annie@domain.com', '+23655041278', '/images/default.jfif')">
-                        <img class="photo" src="/images/default.jfif">
-                        <div class="teachersName">
-                            <h3>Anna<br>Muzychuk</h3>
-                        </div>
-                        <p><span class="science">Chess</span><br><span class="country">Belarus</span></p>
-
-                    </div>
 
                 </div>
             </section>
@@ -161,86 +92,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Specialty</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Nationality</th>
+                            <th id="nameHeader">Name <span class="sort-arrow">&#9660;</span></th>
+                            <th id="specialtyHeader">Specialty <span class="sort-arrow">&#9660;</span></th>
+                            <th id="ageHeader">Age <span class="sort-arrow">&#9660;</span></th>
+                            <th id="genderHeader">Gender <span class="sort-arrow">&#9660;</span></th>
+                            <th id="countryHeader">Country <span class="sort-arrow">&#9660;</span></th>
                         </tr>
                     </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>Daisy Alexander</td>
-                            <td>Chemistry</td>
-                            <td>28</td>
-                            <td>Female</td>
-                            <td>Vietnam</td>
-                        </tr>
-                        <tr>
-                            <td>Julia Bradley</td>
-                            <td>Math</td>
-                            <td>26</td>
-                            <td>Female</td>
-                            <td>USA</td>
-                        </tr>
-                        <tr>
-                            <td>Rita Hart</td>
-                            <td>Art</td>
-                            <td>41</td>
-                            <td>Female</td>
-                            <td>Ireland</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan Jacobs</td>
-                            <td>Math</td>
-                            <td>32</td>
-                            <td>Male</td>
-                            <td>England</td>
-                        </tr>
-                        <tr>
-                            <td>Nathaniel White</td>
-                            <td>Computer Science</td>
-                            <td>37</td>
-                            <td>Male</td>
-                            <td>Austria</td>
-                        </tr>
-                        <tr>
-                            <td>Frank Medina</td>
-                            <td>English</td>
-                            <td>43</td>
-                            <td>Male</td>
-                            <td>Italy</td>
-                        </tr>
-                        <tr>
-                            <td>Ella Curtis</td>
-                            <td>Chess</td>
-                            <td>34</td>
-                            <td>Female</td>
-                            <td>USA</td>
-                        </tr>
-                        <tr>
-                            <td>Claire Simmons</td>
-                            <td>Art</td>
-                            <td>38</td>
-                            <td>Female</td>
-                            <td>Netherlands</td>
-                        </tr>
-                        <tr>
-                            <td>Benjamin Knight</td>
-                            <td>Biology</td>
-                            <td>44</td>
-                            <td>Male</td>
-                            <td>Scotland</td>
-                        </tr>
-                        <tr>
-                            <td>Norma Rose</td>
-                            <td>Statistics</td>
-                            <td>36</td>
-                            <td>Female</td>
-                            <td>France</td>
-                        </tr>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
 
                 <div class="pages">
@@ -258,39 +117,18 @@
             <section class="favorites">
                 <h2>Favorites</h2>
                 <div class="favorite-teachers-container">
+
                     <div class="scroll-left">
                         <button class="arrow-icon">&lt;</button>
                     </div>
-                    <div class="favorite-teachers-list">
 
-                        <div class="favorite-card">
-                            <img class="photo" src="/images/default.jfif">
-                            <h3>Ihor<br>Tkachuk</h3>
-                            <p><span class="country">Ukraine</span></p>
-                        </div>
-
-                        <div class="favorite-card">
-                            <img class="photo" src="/images/default.jfif">
-                            <h3>Rita<br>Hart</h3>
-                            <p><span class="country">Belarus</span></p>
-                        </div>
-
-                        <div class="favorite-card">
-                            <img class="photo" src="/images/default.jfif">
-                            <h3>John<br>Burke</h3>
-                            <p><span class="country">Belgium</span></p>
-                        </div>
-
-                        <div class="favorite-card">
-                            <img class="photo" src="/images/default.jfif">
-                            <h3>Ari<br>Tang</h3>
-                            <p><span class="country">China</span></p>
-                        </div>
-
+                    <div class="favorite-teachers-list" id="favoriteTeachersList">
                     </div>
+
                     <div class="scroll-right">
                         <button class="arrow-icon">&gt;</button>
                     </div>
+
                 </div>
             </section>
 
@@ -318,7 +156,7 @@
                             <li><a href="#">About</a></li>
                         </ul>
                     </nav>
-                    <button id="addTeacherBtn" class="add-teacher" >Add teacher</button>
+                    <button id="addTeacherBtn" class="add-teacher">Add teacher</button>
                 </div>
             </section>
         </main>
@@ -329,7 +167,10 @@
 
     <div id="teacherModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeTeacherInfo()">&times;</span>
+            <div class="modal-header">
+                <img class="favorite-star" src="/images/halfStar.png" onclick="toggleFavoriteStar(this)" />
+                <span class="close" onclick="closeTeacherInfo()">&times;</span>
+            </div>
             <div class="teacher-info-container">
                 <div class="teacher-photo-container">
                     <img id="teacher-photo" src="" alt="Teacher Photo">
@@ -341,7 +182,7 @@
                     <p id="teacher-age-gender"></p>
                     <p><a id="teacher-email" href=""></a></p>
                     <p id="teacher-phone"></p>
-                    <p class="teacher-bio">Lorem ipsum dolor sit amet...</p>
+                    <p class="teacher-bio"></p>
                 </div>
             </div>
         </div>
@@ -349,7 +190,7 @@
 
 
 
-   
+
     <div id="teacherAddModal" class="teacher-modal">
         <div class="teacher-modal-content">
             <span class="teacher-close-btn">&times;</span>
@@ -360,9 +201,9 @@
 
                 <label for="teacherSpeciality">Speciality</label>
                 <select id="teacherSpeciality" class="teacher-input">
-                    <option value="mathematics">Mathematics</option>
-                    <option value="physics">Physics</option>
-                    <option value="chemistry">Chemistry</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
 
                 </select>
 
@@ -371,9 +212,9 @@
 
                         <label for="teacherCountry">Country</label>
                         <select id="teacherCountry" class="teacher-input">
-                            <option value="ukraine">Ukraine</option>
-                            <option value="usa">USA</option>
-                            <option value="uk">UK</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="USA">USA</option>
+                            <option value="UK">UK</option>
 
                         </select>
 
@@ -404,9 +245,6 @@
                     <input type="radio" id="teacherFemale" name="teacherSex" value="female">
                     <label for="teacherFemale">Female</label>
                 </div>
-
-                <label for="teacherColor">Background Color</label>
-                <input type="color" id="teacherColor" class="teacher-input">
 
                 <label for="teacherNotes">Notes (optional)</label>
                 <textarea id="teacherNotes" class="teacher-input" placeholder="Enter any notes"></textarea>

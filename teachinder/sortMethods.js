@@ -12,10 +12,9 @@ function filterUsers(users, filters) {
 }
 
 // const filters = {
-//     country: "United States",
-//     age: { min: 30 },
+    
 //     gender: "Female",
-//     favorite: true
+    
 // };
 
 // const filteredUsers = filterUsers(randomUserMock, filters);
@@ -59,6 +58,9 @@ function findUsers(users, searchParam, value) {
 // const found = findUsers(randomUserMock, 'age', 64);
 // console.log(found);
 
+
+
+
 function getPercentage(users, searchParam, value) {
     const matchingUsers = users.filter(user => {
         return user[searchParam] > value;
@@ -68,5 +70,6 @@ function getPercentage(users, searchParam, value) {
     return percentage.toFixed(2);
 }
 
-const percentage = getPercentage(randomUserMock, 'age', 15);
-console.log(percentage);
+
+// const percentage = getPercentage(randomUserMock, 'age', 30);
+// console.log(percentage);
