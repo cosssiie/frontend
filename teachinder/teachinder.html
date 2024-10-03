@@ -51,15 +51,9 @@
                         <option value="51+">51+</option>
                     </select>
 
-                    <label for="region">Region</label>
+                    <label for="region">Country</label>
                     <select id="region" name="region">
-                        <option value="select">Select region</option>
-                        <option value="Europe">Europe</option>
-                        <option value="NorthAmerica">North America</option>
-                        <option value="SouthAmerica">South America</option>
-                        <option value="Africa">Africa</option>
-                        <option value="Asia">Asia</option>
-                        <option value="Australia">Australia</option>
+                        <option value="select">Select country</option>
                     </select>
 
                     <label for="sex">Sex</label>
@@ -72,16 +66,19 @@
                     <label class="with-checkbox">
                         <input type="checkbox" id="only-photo"> Only with photo
                     </label>
-                
+
                     <label class="with-checkbox">
                         <input type="checkbox" id="only-favorites"> Only favorites
                     </label>
 
                 </div>
 
+                <div class="teachers-list"></div>
 
-                <div class="teachers-list">
-
+                <div class="pagination">
+                    <button id="prev-page" disabled>Previous</button>
+                    <span id="page-info">1</span>
+                    <button id="next-page">Next</button>
                 </div>
             </section>
 
@@ -101,14 +98,6 @@
                     </thead>
                     <tbody></tbody>
                 </table>
-
-                <div class="pages">
-                    <a href="#" class="page_black">1</a>
-                    <a href="#" class="page">2</a>
-                    <a href="#" class="page">3</a>
-                    <a href="#" class="page_black">...</a>
-                    <a href="#" class="page">Last</a>
-                </div>
 
             </section>
 
@@ -164,7 +153,6 @@
 
 
 
-
     <div id="teacherModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -179,14 +167,15 @@
                     <h2 id="teacher-name"></h2>
                     <p id="teacher-specialty"></p>
                     <p id="teacher-location"></p>
-                    <p id="teacher-age-gender"></p>
                     <p><a id="teacher-email" href=""></a></p>
                     <p id="teacher-phone"></p>
-                    <p class="teacher-bio"></p>
+                    <p id="teacher-age"></p>
+                    <p id="teacher-gender"></p>
                 </div>
             </div>
         </div>
     </div>
+    
 
 
 
@@ -196,8 +185,11 @@
             <span class="teacher-close-btn">&times;</span>
             <h2 class="teacher-modal-title">Add Teacher</h2>
             <form id="teacherAddForm">
-                <label for="teacherName">Name</label>
-                <input type="text" id="teacherName" class="teacher-input" placeholder="Enter name" required>
+                <label for="teacherFirstName">Fisrt name</label>
+                <input type="text" id="teacherFirstName" class="teacher-input" placeholder="Enter name" required>
+
+                <label for="teacherLastName">Last name</label>
+                <input type="text" id="teacherLastName" class="teacher-input" placeholder="Enter name" required>
 
                 <label for="teacherSpeciality">Speciality</label>
                 <select id="teacherSpeciality" class="teacher-input">
