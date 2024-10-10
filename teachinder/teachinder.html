@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="teachinder_style.css">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <title>Teachinder</title>
 </head>
 
@@ -123,6 +124,19 @@
 
             <hr>
 
+            <section class="chart">
+                <h2>Chart</h2>
+
+                <div class="chart-container">
+                    <canvas id="genderChart" width= 250px , height= 250px ></canvas>
+                    <canvas id="subjectChart" width= 250px , height= 250px></canvas>
+                    <canvas id="countryChart" width= 250px , height= 250px></canvas>
+                    
+                </div>
+            </section>
+
+            <hr>
+
             <section class="footer">
 
                 <p>
@@ -171,13 +185,14 @@
                     <p id="teacher-phone"></p>
                     <p id="teacher-age"></p>
                     <p id="teacher-gender"></p>
+                    <p id="teacher-birthday"></p>
+                    <div id="teacher-map-container">
+                        <div id="teacher-map" style="height: 250px; width: 400px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-
-
 
 
     <div id="teacherAddModal" class="teacher-modal">
@@ -248,6 +263,15 @@
 
 
     <script src="teachinder_script.js"></script>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash/lodash.min.js"></script>
+
+
+
+
 
 
 </body>

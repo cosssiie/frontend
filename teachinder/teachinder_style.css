@@ -145,7 +145,8 @@ main {
 
 .top-teachers,
 .statistics,
-.favorites {
+.favorites, 
+.chart {
     margin-bottom: 30px;
     text-align: center;
 
@@ -191,7 +192,6 @@ main {
 .teacher-card .photo:hover,
 .favorite-card .photo:hover {
     border: 2px solid #940909;
-    ;
 }
 
 .teacher-card h3,
@@ -270,13 +270,26 @@ main {
     color: #3a3a3a;
 }
 
-.favorite-teachers-container {
+.favorite-teachers-container{
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
     position: relative;
 }
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+canvas {
+    max-width: 250px;
+    max-height: 250px;
+}
+
 
 .favorite-teachers-list {
     display: flex;
