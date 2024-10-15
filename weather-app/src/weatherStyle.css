@@ -1,0 +1,73 @@
+html, body {
+    min-width: 500px; /* Минимальная ширина страницы */
+}
+
+header {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1{
+    
+    color: rgb(255, 255, 255);
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.searchBar input {
+    text-align: center;
+    height: 30px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    border: none;
+}
+
+.search {
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: none;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 0px;
+    gap: 20px;
+    list-style: none;
+    background-color: rgb(0, 0, 0);
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-family: 'Calibri', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
