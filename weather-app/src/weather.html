@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="weatherStyle.css">
+    <link rel="stylesheet" href="Dashboard.css">
     <title>Weather</title>
 
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -13,8 +13,42 @@
 </head>
 
 <body>
-    <div id ="container"></div>
-    <script src="weatherScript.js" type="text/babel"></script>
+    <div id="container">
+        <header>
+            <div class="head">
+                <h1>Weather</h1>
+                <div class="searchBar">
+                    <input id="searchInput" type="text" placeholder="" />
+                    <button class="search" id="searchBtn">Search</button>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <nav>
+                    <ul>
+                        <li><a href="#">Cities</a></li>
+                        <li><a href="#">Weather Map</a></li>
+                        <li><a href="#">Info</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="location">
+            <h2>Ukraine, Kyiv</h2>
+        </div>
+
+        <div class="weatherCards">
+            <div class="card">
+                <img id="weatherIcon" src="/weather-app/public/images/yellow-sun.png" alt="Weather Icon" />
+                <h2>Date</h2>
+                <p>Max temperature: 11 °C</p>
+                <p>Min temperature: 6 °C</p>
+                <p>Humidity: 60 %</p>
+                <p>Wind Speed: 5 m/s</p>
+            </div>
+        </div>
+    </div>
 
 </body>
 

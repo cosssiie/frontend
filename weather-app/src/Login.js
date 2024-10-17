@@ -9,12 +9,11 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //console.log('Form submitted:', { username, password });
     if (username === 'liza2' && password === 'liza2') {
       document.cookie = 'user=authenticated';
       navigate('./Dashboard');
     } else {
-      console.error('Invalid credentials');
+      window.alert('Invalid username or password');
     }
   };
 
@@ -51,6 +50,7 @@ const SignInForm = styled.div`
 
 const H1 = styled.h1`
   display: flex;
+  color: rgb(0, 0, 0);
   justify-content: center;
 `;
 

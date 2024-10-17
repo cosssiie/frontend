@@ -1,0 +1,115 @@
+html,
+body {
+    min-width: 500px;
+    font-family: 'Calibri', sans-serif;
+}
+
+#container {
+    padding: 0 20px;
+    background-color: #4b9dea;
+}
+
+
+header {
+    position: relative;
+    padding: 20px;
+    color: white;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.searchBar input {
+    text-align: center;
+    height: 30px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    border: 1px rgb(0, 0, 0);
+}
+
+.search {
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: none;
+    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 0px;
+    gap: 20px;
+    list-style: none;
+    background-color: rgb(255, 255, 255);
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.location {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.weatherCards {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+    margin: 20px 0;
+
+}
+
+.card {
+    background-color: #3a85cc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card p,
+h2 {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
